@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual DOM vs Traditional DOM</title>
+    <!-- React and ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>React vs Vanilla DOM Updates</h1>
+
+    <!-- Vanilla DOM Elements -->
+    <h2 id="vanillaTitle">Vanilla Title</h2>
+    <p id="vanillaCount">Vanilla DOM Updates: 0</p>
+    <button onclick="updateVanillaTitle()">Change Title (Vanilla JS)</button>
+
+    <hr />
+
+    <!-- React DOM Root -->
+    <div id="react-root"></div>
+
+
+
+    <!-- Script for React & Vanilla Logic -->
+    <script type="text/babel">
+        const { useState } = React;
+
+        function ReactApp() {
+            const [title, setTitle] = useState("React Title");
+            const [count, setCount] = useState(0);
+
+            const handleChange = () => {
+                const newTitle = `React Title ${count + 1}`;
+                setTitle(newTitle);
+                setCount(count + 1);
+            };
+
+            return (
+                <div>
+                    <h2>{title}</h2>
+                    <p>React DOM Updates: {count}</p>
+                    <button onClick={handleChange}>Change Title (React)</button>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("react-root")).render(<ReactApp />);
+    </script>
+
+    <!-- Vanilla DOM Script -->
+    <script>
+        let vanillaCount = 0;
+
+        function updateVanillaTitle() {
+            vanillaCount++;
+            const newTitle = `Vanilla Title ${vanillaCount}`;
+            document.getElementById("vanillaTitle").innerText = newTitle;
+            document.getElementById("vanillaCount").innerText = `Vanilla DOM Updates: ${vanillaCount}`;
+        }
+    </script>
+
+</body>
+
+</html>
