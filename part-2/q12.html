@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reusable Card Component</title>
+
+    <!-- React & Babel CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #e4dddd;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgb(219, 206, 206);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .card-body {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align:center;">React Reusable Card Component</h1>
+    <div id="root"></div>
+
+    <!-- React App Script -->
+    <script type="text/babel">// Reusable Card component
+        function Card({ title, children }) {
+            return (
+                <div className="card">
+                    <h2 className="card-title">{title}</h2>
+                    <div className="card-body">{children}</div>
+                </div>
+            );
+        }
+
+        // Parent component rendering multiple cards
+        function App() {
+            return (
+                <div className="card-container">
+                    <Card title="Card 1">
+                        <p>This is the content of the first card.</p>
+                    </Card>
+
+                    <Card title="Card 2">
+                        <ul>
+                            <li>React</li>
+                            <li>JavaScript</li>
+                            <li>CDN</li>
+                        </ul>
+                    </Card>
+
+                    <Card title="Card 3">
+                        <p><strong>Reusable</strong> components make apps modular and clean.</p>
+                    </Card>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
