@@ -13,7 +13,10 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
-        /* Include the CSS here or link external CSS */
+        * {
+            background-color: antiquewhite;
+        }
+
         .container {
             max-width: 400px;
             margin: auto;
@@ -23,6 +26,7 @@
         input[type="text"] {
             width: 60%;
             padding: 6px;
+            margin-bottom: 10px;
             margin-right: 8px;
             box-sizing: border-box;
         }
@@ -130,6 +134,7 @@
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
+
                     <select value={priority} onChange={(e) => setPriority(e.target.value)}>
                         <option>High</option>
                         <option>Medium</option>
@@ -147,6 +152,8 @@
                                 <option>Low</option>
                             </select>
                         </label>
+                        <br></br>
+                        <br></br>
 
                         <label>
                             Status Filter:
